@@ -479,3 +479,22 @@ button:active,
     display:none;
   }
 }
+
+
+
+.project-item:active,
+.skill-card:active,
+button:active {
+  transform: scale(0.96);
+}
+
+.project-item button {
+  min-height:44px;
+  min-width:90px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+

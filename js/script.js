@@ -19,8 +19,10 @@ const closeModal = document.querySelector(".close-modal");
 
 const demoLink = document.getElementById("demoLink");
 
-document.querySelectorAll(".view-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
+document.querySelectorAll(".project-item").forEach(card => {
+  const btn = card.querySelector(".view-btn");
+
+  card.addEventListener("click", () => {
     modal.classList.add("active");
 
     modalImg.src = btn.dataset.img;
@@ -36,6 +38,7 @@ document.querySelectorAll(".view-btn").forEach(btn => {
     }
   });
 });
+
 
 
 closeModal.addEventListener("click", () => {
@@ -101,9 +104,16 @@ modal.addEventListener("touchstart", e => {
 
 modal.addEventListener("touchend", e => {
   const endY = e.changedTouches[0].clientY;
-  if (endY - startY > 120) {
+  if (endY - startY > 80) {
     modal.classList.remove("active");
   }
 });
+
+document.querySelectorAll(".navbar ul a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+  });
+});
+
 
 
