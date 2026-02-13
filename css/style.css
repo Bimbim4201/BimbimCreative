@@ -99,6 +99,22 @@ body {
   color: white;
 }
 
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+  z-index: 90;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
 
 .hero {
   display:flex;
@@ -454,15 +470,18 @@ body::before {
     position: fixed;
     background:#020617;
     top: 0;
-    right: -100%;
+    transition: transform .4s ease;
+    transform: translateX(100%);
+    right: 0;
     height: 100vh;
     width: 70%;
     padding-top: 80px;
     border-radius: 0;
+    z-index: 110;
   }
 
   .navbar ul.active {
-    right: 0;
+    transform: translateX(0);
   }
 
   .hero {

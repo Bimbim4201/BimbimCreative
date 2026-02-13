@@ -88,30 +88,28 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 /* Menu MOBILE */
 
-const toggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector(".navbar ul");
+
+const overlay = document.querySelector(".nav-overlay");
 
 toggle.addEventListener("click", () => {
   navMenu.classList.toggle("active");
+  overlay.classList.toggle("active");
+  document.body.style.overflow =
+    navMenu.classList.contains("active") ? "hidden" : "";
 });
 
-
-let startY = 0;
-
-modal.addEventListener("touchstart", e => {
-  startY = e.touches[0].clientY;
-});
-
-modal.addEventListener("touchend", e => {
-  const endY = e.changedTouches[0].clientY;
-  if (endY - startY > 80) {
-    modal.classList.remove("active");
-  }
+overlay.addEventListener("click", () => {
+  navMenu.classList.remove("active");
+  overlay.classList.remove("active");
+  document.body.style.overflow = "";
 });
 
 document.querySelectorAll(".navbar ul a").forEach(link => {
   link.addEventListener("click", () => {
     navMenu.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
   });
 });
 
